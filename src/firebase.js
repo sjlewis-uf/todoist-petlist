@@ -9,7 +9,7 @@ const firebaseConfig = firebase.initializeApp({
     storageBucket: "todoist-petlist.appspot.com",
     messagingSenderId: "189121751509",
     appId: "1:189121751509:web:f57b4389f3181056a9f55c",
-    measurementId: "G-VVC7K7WT2R"
 });
 
 export { firebaseConfig as firebase };
+
