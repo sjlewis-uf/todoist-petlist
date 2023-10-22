@@ -2,13 +2,14 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const firebaseConfig = firebase.initializeApp({
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messageSenderId: '',
-    apiId: '',
+    apiKey: "AIzaSyBhtbteDZ70puqqQxAO2-b6Nh1gI0HI-WM",
+    authDomain: "todoist-petlist.firebaseapp.com",
+    databaseURL: "https://todoist-petlist-default-rtdb.firebaseio.com",
+    projectId: "todoist-petlist",
+    storageBucket: "todoist-petlist.appspot.com",
+    messagingSenderId: "189121751509",
+    appId: "1:189121751509:web:f57b4389f3181056a9f55c",
+    measurementId: "G-VVC7K7WT2R"
 });
 
 export { firebaseConfig as firebase };
