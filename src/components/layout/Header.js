@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddTask } from '../AddTask';
 
 export const Header = () => { 
     const x = 1;
@@ -9,10 +10,26 @@ export const Header = () => {
             </div>
             <div className="settings">
                 <ul>
-                    <li>+</li>
+                    <li
+                    data-testid="quick-add-task-action"
+                    className="settings__add"
+                    onClick={() => {
+                        setShowQuickAddTask(true); 
+                        setShouldShowMain(true);
+                    }}
+                    >+
+                    </li>
                 </ul>
             </div>
         </nav>
+        
+        <AddTask
+            showAddTaskMain={false}
+            shouldShowMain={shouldShowMain}
+            showQuickAddTask={showQuickAddTask}
+            setShowQuickAddTask={setShowQuickAddTask}
+        />
+
     </header>; 
 };
 

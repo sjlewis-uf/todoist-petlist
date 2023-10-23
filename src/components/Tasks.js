@@ -1,13 +1,33 @@
-import React from 'react';
-import { Checkbox } from './Checkbox'
+import React, { useState, useEffect } from 'react';
+import { Checkbox } from './Checkbox';
+import { AddTask } from './AddTask';
 import { useTasks } from '../hooks';
+import { collatedTasks } from '../constants';
+import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
+import { useSelectedProjectValue, useProjectsValue } from '../context';
+
 
 export const Tasks = () => {
-    const { tasks } = useTasks('1');
+    const { selectedProject } = useSelectedProjectValue();
+    const { projects } = useProjectValue();
+    const { tasks } = useTasks('selectedProject');
 
-    console.log(tasks);
+    let projectName = '';
+    
+    if (projects.length > 0 
+        && selectProject 
+        && !collatedTasksExist(selectedProject)
+        ) {
+        projectName = getTitle(projects, selectedProject).name;
+    }
 
-    const projectName = '';
+    if (collatedTasksExist(selectedProject) && selectedProject) {
+        projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+    }
+
+    useEffect(() => {
+        document.title = '${projectName}: PetList';
+    });
 
     return (
         <div className="tasks" data-testid="tasks">
@@ -21,6 +41,8 @@ export const Tasks = () => {
                     </li>
                 ))}
             </ul>
+
+            <AddTask />
         </div>
     );
 };
