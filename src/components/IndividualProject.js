@@ -1,6 +1,13 @@
 import React, {useState} from "react";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
-import { firebase } from "../firebase";
+//import { firebase } from "firebase/compat/app";
+import { initializeApp } from 'firebase/app';
+
+const firebaseConfig = {
+  //...
+};
+
+const app = initializeApp(firebaseConfig);
 
 export const IndividualProject = ({project}) => {
     const [showConfirm, setShowConfirm] = useState(false);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Projects } from '../Projects';
 import { useSelectedProjectValue } from '../../context';
+import { AddProject } from '../AddProject';
 
 
 export const Sidebar = () => {
@@ -12,39 +13,78 @@ export const Sidebar = () => {
     <div className="sidebar" data-testid="sidebar">
         <ul className="sidebar__generic">
             <li 
-                data-testId="inbox" 
-                className={active === 'inbox' ? 'active' :undefined}
-                onClick={() => {
-                    setActive('inbox');
-                    setSelectedProject('INBOX');
-                }}>
+                data-testid="inbox" 
+                className={active === 'inbox' ? 'active' :undefined}>
+                <div
+                    datatestid="inbox-action"
+                    tabIndex={0}
+                    role="button"
+                    onClick={() => {
+                        setActive('inbox');
+                        setSelectedProject('INBOX');                        
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setActive('inbox');
+                            setSelectedProject('INBOX');
+                        }
+                    }}
+                    >
                 <span>Inbox</span>
+                </div>
             </li>
             <li data-testId="today" 
-                className={active === 'today' ? 'active' : undefined}
-                onClick={() => {
-                    setActive('today');
-                    setSelectedProject('TODAY');
-                }}>
-                <span>Today</span>
+                className={active === 'today' ? 'active' : undefined}>
+                <div data-testid="today-action"
+                    tabIndex={0}
+                    role="button"
+                    onClick={() => {
+                        setActive('today');
+                        setSelectedProject('TODAY');
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setActive('today');
+                            setSelectedProject('TODAY');
+                        }
+                    }}>
+                    <span>Today</span>
+                </div>
             </li>
             <li 
-                data-testId="upcoming" 
-                className={active === 'upcoming' ? 'active' : undefined}
-                onClick={() => {
-                    setActive('upcoming');
-                    setSelectedProject('Upcoming');
-                }}>
-                <span>Upcoming</span>
+                data-testid="upcoming" 
+                className={active === 'upcoming' ? 'active' : undefined}>
+                    <div data-testid="upcoming-action"
+                        tabIndex={0}
+                        role="button"
+                        onClick={() => {
+                            setActive('upcoming');
+                            setSelectedProject('UPCOMING');
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                setActive('upcoming');
+                                setSelectedProject('UPCOMING');
+                            }
+                        }}>
+                        <span>Upcoming</span>
+                    </div>
             </li>
         </ul>
-        <div className="sidebar__middle" onClick={() => setShowProjects(!showProjects)}>
+        <div className="sidebar__middle" 
+            onClick={() => setShowProjects(!showProjects)}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') setShowProjects(!showProjects);
+            }}
+            role="button"
+            tabIndex={0}
+        >
             <span className={!showProjects ? 'hidden-projects' : undefined} />
             <h2>Projects</h2>
         </div>
-        <ul className="sidebar__projects">{showProjects && <Projects/>}</ul>
+        <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
             
-        {showProjects && <AddProject/>}
+        {showProjects && <AddProject />}
     </div>
     );
 };

@@ -1,6 +1,13 @@
 import React, {useState} from "react";
 import moment from "moment";
-import { firebase } from "../firebase";
+//import { firebase } from "firebase/compat/app";
+import { initializeApp } from 'firebase/app';
+
+const firebaseConfig = {
+  //...
+};
+
+const app = initializeApp(firebaseConfig);
 import { useSelectedProjectValue } from "../context";
 import { ProjectOverlay } from "./ProjectOverlay";
 import { TaskDate } from "./TaskDate";

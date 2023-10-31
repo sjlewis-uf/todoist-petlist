@@ -21,7 +21,7 @@ export const useTasks = selectedProject => {
             'date', '==', moment().format('MM/DD/YYY')
             ))
         :selectedProject === 'INBOX' || selectedProject === 0
-        ?(unsubscribe = unsubscribe.where('date', '==', ''))
+        ? (unsubscribe = unsubscribe.where('date', '==', ''))
         :unsubscribe;
 
         unsubscribe = unsubscribe.onSnapshot(snapshot => {
@@ -48,8 +48,8 @@ export const useTasks = selectedProject => {
     return { tasks, archivedTasks };
 };
 
-const selectedProject = 1;
-const { tasks, archivedTasks } = useTasks(selectedProject);
+//const selectedProject = 1;
+//const { tasks, archivedTasks } = useTasks(selectedProject);
 
 export const useProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -62,14 +62,14 @@ export const useProjects = () => {
         .orderBy('projectId')
         .get()
         .then(snapshot => {
-            const allProjects = snapshot.docs.map(project=> ({
+            const allProjects = snapshot.docs.map(project => ({
                 ...project.data(),
                 docId: project.id,
             }));
 
             if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
                 setProjects(allProjects);
-            };
+            }
         });
     }, [projects]);
 
