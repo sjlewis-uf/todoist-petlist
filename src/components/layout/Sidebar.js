@@ -33,7 +33,7 @@ export const Sidebar = () => {
                 <span>Inbox</span>
                 </div>
             </li>
-            <li data-testId="today" 
+            <li data-testid="today" 
                 className={active === 'today' ? 'active' : undefined}>
                 <div data-testid="today-action"
                     tabIndex={0}

@@ -90,7 +90,7 @@ export const AddTask = ({
                             </div>
                         </>
                      )}
-                    <Project Overlay 
+                    <ProjectOverlay 
                         setProject={setProject} 
                         showProjectOverlay={showProjectOverlay}
                         setShowProjectOverlay={setShowProjectOverlay}

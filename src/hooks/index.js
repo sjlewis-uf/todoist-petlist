@@ -14,7 +14,7 @@ export const useTasks = selectedProject => {
         .where('userId', '==', 'petName1');
 
         unsubscribe = 
-        selectedProject && !collatedTasksExist(selectedProjects) 
+        selectedProject && !collatedTasksExist(selectedProject) 
         ? (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
         : selectedProject === 'TODAY'
         ? (unsubscribe = unsubscribe.where(

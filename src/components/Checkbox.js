@@ -1,12 +1,6 @@
 import React from 'react';
 import { firebase } from '../firebase';
 
-const firebaseConfig = {
-  //...
-};
-
-const app = initializeApp(firebaseConfig);
-
 export const Checkbox = ({ id }) => {
     const archiveTask = () => {
         firebase
