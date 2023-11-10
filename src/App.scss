@@ -8,9 +8,11 @@ Universal Styling
 ==========================*/
 
 html {
+    -webkit-box-sizing: inherit;
     box-sizing: border-box;
 }
 *, *:before, *:after {
+    -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -41,8 +43,9 @@ Mixins
 ==========================*/
 
 @mixin box-overlay() {
+    -webkit-box-shadow: $generic-box-shadow;
     box-shadow: $generic-box-shadow;
-    position: relative;
+    position: absolute;
     width: 100%;
     z-index: 1;
     top: 85px;
@@ -50,14 +53,30 @@ Mixins
 }
 
 @mixin va($va-align: center) {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
     @if $va-align != center {
-        justify-content: left;
+        -webkit-box-pack: left;
+            -ms-flex-pack: left;
+                justify-content: left;
     } @else {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
+}
+
+@mixin no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @mixin button($width) {
@@ -87,8 +106,15 @@ Mixins
     margin: 2px 5px;
 }
 
+@mixin transparent-button() {
+    background-color: transparent;
+    border: 0;
+}
+
 @mixin task-item() {
     list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     line-height: 18px;
     color: #333;
@@ -118,7 +144,9 @@ Header
 header {
     border-bottom: solid 1px #083643;
     background-color: $generic-bg;
+    -webkit-transition: height 200ms ease-in;
     transition: height 200ms ease-in;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     height: 44px;
     z-index: 400;
@@ -132,7 +160,9 @@ header {
 
     nav {
         display: grid;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
         grid-column-gap: 0px;
@@ -161,8 +191,9 @@ header {
 
                 ul {
                     float: right;
+                }
 
-                    li {
+                    ul li {
                         @include va;
 
                         list-style-type: none;
@@ -181,9 +212,15 @@ header {
                         &.settings__add {
                             margin-right: 15px;
                             font-size: 30px;
+
+                            button {
+                                @include transparent-button();
+                                color: white;
+                                cursor: pointer;
+                            }
                         }
                     }
-                }
+                
             }
         }
     }
@@ -209,11 +246,10 @@ Sidebar
     }
 
     li {
-        padding-left: 10px;
-        padding-right: 15px;
-
         &:hover .sidebar__project-delete {
-            display: block;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
         }
     }
 
@@ -252,6 +288,8 @@ Sidebar
     &__middle {
         margin-top: 20px;
         margin-bottom: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         border-bottom: $generic-border;
         padding-left: 10px;
@@ -262,7 +300,8 @@ Sidebar
             margin-right: 10px;
 
             svg.hidden-projects {
-                transform: rotate(-90deg);
+                -webkit-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
             }
         }
 
@@ -278,16 +317,25 @@ Sidebar
 
     &__generic {
         li {
-            padding: 10px 0 10px 10px;
             list-style-type: none;
             color: #333;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             cursor: pointer;
             line-height: 1.50;
             font-size: 15px;
+            padding-left: 0;
+            padding-right: 0;
 
             span:first-of-type {
                 margin-right: 10px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-bos-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
 
                  svg {
                     width: 18px;
@@ -346,7 +394,9 @@ Main Content
 
 .content {
     display: grid;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     grid-template-columns: 1fr auto;
     max-width: 922px;
     margin: auto;
@@ -384,6 +434,8 @@ Tasks
     }
 
     &__list li {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         line-height: 18px;
         color: #333;
@@ -395,9 +447,15 @@ Tasks
 
         .checkbox-holder {
             margin-right: 20px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             line-height: 16px;
 
             .checkbox {
@@ -428,10 +486,15 @@ Add Task
         width: 100%;
         height: 100;
         z-index: 2000;
+        -webkit-transition: opacity 0.2s ease-in;
         transition: opacity 0.2s ease-in;
         height: calc(100vh);
 
         .add-task__main {
+            @include mq('900px') {
+                width: 90%;
+            }
+
             overflow: visible;
             margin-bottom: 20px;
             margin-top: 55px;
@@ -441,6 +504,7 @@ Add Task
             left: 50%;
             top: 50%;
             padding: 20px 30px;
+            -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
 
             .header {
@@ -494,7 +558,7 @@ Add Task
     }
 
     &__submit {
-        @include button(90px);
+        @include button('90px');
     }
 }
 
@@ -528,6 +592,7 @@ Task Date
 
     &__list li {
         @include task-item();
+        padding: 0;
 
         span:first-of-type{
             margin-right: 10px;
@@ -548,8 +613,14 @@ Project Overlay
     @include box-overlay();
     background-color: white;
 
+    @include mq('900px') {
+        width: 200px;
+        right: 0;
+    }
+
     &__list li {
         @include task-item();
+        padding: 0;
     }
 }
 
@@ -577,7 +648,7 @@ Add Project
     }
 
     &__submit {
-        @include button(100px);
+        @include button('100px');
     }
 
     &__cancel {
