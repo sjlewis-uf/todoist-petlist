@@ -21,7 +21,6 @@ export const IndividualProject = ({project}) => {
 
     return (
         <>
-            <span className="sidebar__dot>">bullet</span>
             <span className="sidebar__project-name">{project.name}</span>
             <span className="sidebar__project-delete" data-testid="delete-project" 
              onClick={() => setShowConfirm(!showConfirm)}>
