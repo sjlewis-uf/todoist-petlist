@@ -268,7 +268,7 @@ Sidebar
 
          &.active, &:hover {
             font-weight: bold;
-            background-color: white;
+            background-color: #f99b44;
         }
     }
 
@@ -318,7 +318,7 @@ Sidebar
     &__generic {
         li {
             list-style-type: none;
-            color: #333;
+            color: white;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -340,13 +340,13 @@ Sidebar
                  svg {
                     width: 18px;
                     height: 18px;
-                    color: #555;
+                    color: white;
                  }
             }
 
             &.active, &:hover {
                 font-weight: bold;
-                background-color: #f99b44;
+                color: #f99b44;
             }
         }
 
