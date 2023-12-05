@@ -9,20 +9,9 @@ import { useSelectedProjectValue, useProjectsValue } from '../context';
 export const Tasks = () => {
     const { selectedProject } = useSelectedProjectValue();
     const { projects } = useProjectsValue();
-    const { tasks } = useTasks('selectedProject');
+    const { tasks } = useTasks(selectedProject);
 
     let projectName = '';
-    
-    if (projects.length > 0 
-        && selectedProject 
-        && !collatedTasksExist(selectedProject)
-        ) {
-        projectName = getTitle(projects, selectedProject).name;
-    }
-
-    // const { tasks } = useTasks(selectedProject);
-
-    // let projectName = '';
 
     if (collatedTasksExist(selectedProject) && selectedProject) {
         projectName = getCollatedTitle(collatedTasks, selectedProject).name;
