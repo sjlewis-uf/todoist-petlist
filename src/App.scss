@@ -181,7 +181,7 @@ header {
                 grid-area: 1/1;
 
                 img {
-                    width: 24px;
+                    width: 100px;
                 }
             }
 
@@ -215,7 +215,7 @@ header {
 
                             button {
                                 @include transparent-button();
-                                color: white;
+                                color: #f99b44;
                                 cursor: pointer;
                             }
                         }
@@ -307,7 +307,7 @@ Sidebar
 
         h2 {
             margin: 0;
-            color: #333;
+            color: #87DBE0;
             font-size: 15px;
             font-weight: bold;
             padding-bottom: 20px;
@@ -568,14 +568,26 @@ Add Task
     margin-bottom: 20px;
 }
 
-.add-task__plus, .add-project__plus {
+.add-project__plus {
     color: white;
     font-size: 18px;
 }
 
-.add-task__text, .add-project__text {
+.add-task__plus {
+    color: white;
+    font-size: 18px;
+}
+
+.add-project__text {
     display: inline-block;
-    color: #545454;
+    color: white;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.add-task__text {
+    display: inline-block;
+    color: #083643;
     font-size: 14px;
     margin-left: 15px;
 }
